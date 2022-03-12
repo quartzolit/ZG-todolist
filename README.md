@@ -3,7 +3,7 @@
 Todo List is a functional Task Creator to help people organizing their tasks.
 
 
-##1.0
+## 1.0
 His first version comes with a console interface using 4 options:
 
 [1] - Create Task
