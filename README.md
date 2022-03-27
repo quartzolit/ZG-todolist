@@ -12,3 +12,7 @@ His first version comes with a console interface using 4 options:
 [4] - Exit
 
 By selecting any of those options the program will trigger function to do it properly
+
+## 1.1
+
+Unit tests for class ToDoCRD and Task Manager added
