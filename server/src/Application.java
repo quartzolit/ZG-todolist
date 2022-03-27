@@ -1,4 +1,6 @@
-import java.util.Comparator;
+import com.quartz.classes.TaskManager;
+import com.quartz.classes.ToDoCRD;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -7,6 +9,7 @@ public class Application {
     public static void main(String[] args) {
 
         List<ToDoCRD> toDoList = new LinkedList<>();
+        TaskManager taskManager = new TaskManager(toDoList);
         boolean loop = true;
 
         Scanner responses = new Scanner(System.in);
@@ -25,13 +28,27 @@ public class Application {
 
             switch (answers){
                 case "1":
-                    createTask(toDoList);
+
+                    ToDoCRD task;
+                    task = taskManager.newTask();
+                    taskManager.createTask(toDoList, task);
+
                     break;
                 case "2":
-                    showList(toDoList);
+
+                    String[] stringList= taskManager.showList(toDoList);
+                    for (int i = 0; i< stringList.length; i++){
+                        System.out.println("ID: "+i+" - " + stringList[i]);
+                }
+                    System.out.println(stringList);
                     break;
                 case "3":
-                    deleteTask(toDoList);
+                    Scanner value = new Scanner(System.in);
+                    int id;
+
+                    System.out.println("Select Task ID you want to delete");
+                    id = value.nextInt();
+                    taskManager.deleteTask(toDoList,id);
                     break;
                 case "4":
                     loop = false;
@@ -43,75 +60,4 @@ public class Application {
 
     }
 
-    public static void showList(List<ToDoCRD> list){
-        int count = 0;
-
-        for (ToDoCRD td: list) {
-            System.out.println("ID - " + count + " " + td.toString());
-            count++;
-        }
-        System.out.println("");
-    }
-
-    public static void deleteTask(List<ToDoCRD> list){
-        Scanner values = new Scanner(System.in);
-        int stringValues;
-
-        System.out.println("Select the Task ID you want to delete");
-        stringValues = values.nextInt();
-
-        if(list.size()>stringValues && list.size()>0) {
-            list.remove(stringValues);
-            System.out.println("Task Deleted!!! ");
-        }
-        else{
-            System.out.println("There is no task with specified ID");
-        }
-
-    }
-
-    public static void createTask(List<ToDoCRD> list){
-        boolean check = true;
-
-        ToDoCRD task = new ToDoCRD();
-        Scanner values = new Scanner(System.in);
-        String stringValues;
-
-        System.out.println("Name of the task");
-        stringValues = values.nextLine();
-        task.setName(stringValues);
-
-        System.out.println("Description of the task");
-        stringValues = values.nextLine();
-        task.setDescription(stringValues);
-
-        System.out.println("Finish date");
-        stringValues = values.nextLine();
-        task.setFinishDt(stringValues);
-
-        while (check){
-            System.out.println("Set Task priority from 1 to 5");
-            stringValues = values.nextLine();
-
-            if(Integer.parseInt(stringValues)>0 && Integer.parseInt(stringValues) <= task.getLIMIT()){
-                task.setPriority(Integer.parseInt(stringValues));
-                check = false;
-            }
-            else {
-                System.out.println("Priority smaller than 1 or larger than 5");
-            }
-        }
-
-        System.out.println("Set Task Category");
-        stringValues = values.nextLine();
-        task.setCategory(stringValues);
-
-        System.out.println("Set Task Status");
-        stringValues = values.nextLine();
-        task.setStatus(stringValues);
-
-        list.add(task);
-        list.sort(Comparator.comparingInt(ToDoCRD::getPriority).reversed());
-
-    }
 }

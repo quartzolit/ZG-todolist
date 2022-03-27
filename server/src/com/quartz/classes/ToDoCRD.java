@@ -1,3 +1,5 @@
+package com.quartz.classes;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -9,9 +11,10 @@ public class ToDoCRD {
     int LIMIT = 5;
     String category;
     String status;
+
     @Override
     public String toString() {
-        return "ToDoCRD{" +
+        return "com.quartz.classes.ToDoCRD{" +
                 "name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", finish_dt='" + finishDt + '\'' +
@@ -55,10 +58,6 @@ public class ToDoCRD {
 
     public int getLIMIT() {
         return LIMIT;
-    }
-
-    public void setLIMIT(int LIMIT) {
-        this.LIMIT = LIMIT;
     }
 
     public String getCategory() {
