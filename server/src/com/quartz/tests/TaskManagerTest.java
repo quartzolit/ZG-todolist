@@ -1,20 +1,14 @@
 package com.quartz.tests;
 
-import com.quartz.classes.ITaskManager;
 import com.quartz.classes.TaskManager;
 import com.quartz.classes.ToDoCRD;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
-import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
 
 class TaskManagerTest {
 

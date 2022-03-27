@@ -3,7 +3,6 @@ package com.quartz.tests;
 import com.quartz.classes.ToDoCRD;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-import org.mockito.*;
 
 public class ToDoCRDTest {
 
