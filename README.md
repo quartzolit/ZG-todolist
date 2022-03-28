@@ -18,6 +18,6 @@ By selecting any of those options the program will trigger function to do it pro
 Unit tests for class ToDoCRD and Task Manager added
 
 
-# Excuting project
+# Running project
 
 You only have to run Application.java to run the program. If you want to run the unit tests. You only have to run the test files on test folder
