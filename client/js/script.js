@@ -140,9 +140,9 @@ function addTask(e){
 
     //Priority
 
-    let priorityRange = priority.value;
+    let priorityRange = priorityScreen.value;
 
-    if(priority.match(priorityRegex)){
+    if(priorityRange.match(priorityRegex)){
         labelPriority.appendChild(labelTextPriority);
         labelPriority.appendChild(labelInputPriority);
         labelTextPriority.textContent = "Priority Level: ";
@@ -153,6 +153,7 @@ function addTask(e){
 
     }else{
         window.alert("Priority out of Range");
+        return;
     }
 
     
