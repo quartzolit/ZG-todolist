@@ -3,7 +3,7 @@ const list = document.querySelector(".activity-list");
 
 const named = document.querySelector("#add-name");
 const description = document.querySelector("#add-description");
-const date = document.querySelector("#add-date");
+const setDate = document.querySelector("#add-date");
 const priorityScreen = document.querySelector("#data-screen");
 const priority = document.querySelector("#data-range").addEventListener("change",setRangeScreen);
 const statusTag = document.querySelector("#add-status");
@@ -20,7 +20,14 @@ function setRangeScreen(){
 
 function addTask(e){
 
+    const dateRegex = /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/
+    const priorityRegex = /[1-5]/
+
     e.preventDefault();
+
+    const today = new Date();
+
+
 
 
     //Element Creation
@@ -94,21 +101,61 @@ function addTask(e){
 
     //Date
 
-    labelDate.appendChild(labelTextDate);
-    labelDate.appendChild(labelInputDate);
-    labelTextDate.textContent = "Final Date: ";
-    labelInputDate.value = date.value;
-    labelInputDate.setAttribute("readonly","readonly");
+    
+    let textDate = setDate.value;
+    let day = `${textDate}`.slice(0,2);
+    let month = textDate.slice(3,5);
+    let year = textDate.slice(6,textDate.lenght);
+
+    if(!textDate.match(dateRegex)){
+
+        window.alert("Invalid Date Format. Use dd/mm/YY or dd/mm/YYYY");
+        return;
+
+        
+    }
+    else{
+        if(Date.parse(`${year}-${month}-${day}`) < today){
+            window.alert("Your finish date ir earlier than today.");
+            return;
+
+        }
+        else{
+            labelInputDate.value = setDate.value;
+            labelDate.appendChild(labelTextDate);
+            labelDate.appendChild(labelInputDate);
+            labelTextDate.textContent = "Final Date: ";
+            labelInputDate.setAttribute("readonly","readonly");
+
+        }
+        
+    }
+
+    
+
+    
+
+
+    
 
     //Priority
 
-    labelPriority.appendChild(labelTextPriority);
-    labelPriority.appendChild(labelInputPriority);
-    labelTextPriority.textContent = "Priority Level: ";
-    labelInputPriority.classList.add("priority-screen");
-    labelInputPriority.value = priorityScreen.value;
-    labelInputPriority.setAttribute("readonly","readonly");
-    labelInputPriority.classList.add("priority-screen");
+    let priorityRange = priority.value;
+
+    if(priority.match(priorityRegex)){
+        labelPriority.appendChild(labelTextPriority);
+        labelPriority.appendChild(labelInputPriority);
+        labelTextPriority.textContent = "Priority Level: ";
+        labelInputPriority.classList.add("priority-screen");
+        labelInputPriority.value = priorityScreen.value;
+        labelInputPriority.setAttribute("readonly","readonly");
+        labelInputPriority.classList.add("priority-screen");
+
+    }else{
+        window.alert("Priority out of Range");
+    }
+
+    
 
     //Status
 
