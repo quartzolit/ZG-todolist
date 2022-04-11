@@ -1,42 +1,85 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <title>TO DO LIST</title>
-    <link rel="stylesheet" type="text/css" href="stylesheet.css" media="screen"/>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/364428d876.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/style.css">
+
+    <title>ZG-ToDoList</title>
 </head>
 <body>
-    <div class="container">
-        <div class="caixa">
-            <h1 class="titulo">TO DO LIST</h1>
-            <div class="paletas_div">
-                <div id="paleta1" class="paleta"></div>
-                <div id="paleta2" class="paleta"></div>
-                <div id="paleta3" class="paleta"></div>
-            </div>
-            <p class="erro"></p>
-            <div class="input_div">
-                <input class="input" type="text" placeholder="Digite uma atividade">
-                <button class="botao_adc">+</button>
-            </div>
-            <div class="lista_atividades">
-                <div class="atividade">
-                    <h2>Atividade 1</h2>
-                    <button class="botao_del">Limpar</button>
-                </div>
-                <div class="atividade">
-                    <h2>Atividade 2</h2>
-                    <button class="botao_del">Limpar</button>
-                </div>
-                <div class="atividade">
-                    <h2>Atividade 3</h2>
-                    <button class="botao_del">Limpar</button>
-                </div>
-            </div>
-            <button class="botao_del_todos">Limpar lista</button>
+    <header>
+        <div class="container">
+            <h2>ZG - To Do List</h2>
         </div>
-    </div>
-<script src="app.js"></script>
+    </header>
+
+    <main>
+        <section class="create-task">
+
+            <div class="container">
+    
+                <h3>Task Creation</h3>
+    
+                <form>
+                    <label>
+                        Task name: 
+                        <input id="add-name" class="input-data" type="text" name ="name" required placeholder="Task Name">
+    
+                    </label>
+                    <label>
+                        Task Description 
+                        <input id="add-description" class="input-data" type="text" name ="description" required placeholder="Task Description">
+                    </label>
+                    <label>
+                        Finish Date: 
+                        <input id="add-date" class="input-data" type="text" name = "finishDate" required placeholder="Digite a data do fim da atividade">
+                    </label>
+                    <label>
+                        Priority level: 
+                        <input id="data-screen" class="priority-screen" type="text" value = "1" readonly>
+                        <input  id="data-range" class="input-data" type="range" name = "priority" value="1" list = "priority-range" required min = "1" max = "5" step="1">
+                    </label>
+                    <label>
+                        Status: 
+                        <select id="add-status" name="Status" id="status-select">
+                            <option value="" ></option>
+                            <option value="To Do" class="to-do" selected>To Do</option>
+                            <option value="Doing" class="doing">Doing</option>
+                            <option value="Done" class="done">Done</option>
+                        </select>
+                    </label>
+    
+    
+                    <button class="add-button">Create New Task</button>
+                    
+                    
+                </form>
+                
+            </div>
+    
+        </section>
+        <section class="task-list">
+            <div class="container">
+                <h3>Task List</h3>
+                <div class="activity-list">
+                    
+                        
+                          
+
+                </div>
+                
+                <button class="clear-all-button">Clear Entire List</button>      
+                 
+            </div>
+
+        </section>
+    </main>
+    <footer>
+        <h6>Developed by Quartz - All Rights Reserved</h6>
+    </footer>
+    <script src="./js/script.js"></script>
 </body>
 </html>
