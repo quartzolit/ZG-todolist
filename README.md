@@ -17,6 +17,14 @@ By selecting any of those options the program will trigger function to do it pro
 
 Unit tests for class ToDoCRD and Task Manager added
 
+## 1.2
+
+Create frontEnd files for future implementation. Added html, css and js files
+
+## 1.3
+
+Create regex validation for priority and date values.
+
 
 # Running project
 
